@@ -30,6 +30,20 @@ The datasets are from the French motor third-party liability insurance dataset c
 
 These findings are descriptive and do not establish that any particular factor causes higher claim frequency.
 
+### Claim Frequency Modeling
+
+A Poisson generalized linear model (GLM) was developed to analyze motor insurance claim frequency using driver age group, vehicle age group, and log-transformed population density. Policy exposure was included as an offset to account for differences in time at risk.
+
+The model identified adjusted associations between these risk factors and claim frequency. Younger drivers had higher estimated claim frequencies than older driver groups, while policies covering newer vehicles also showed higher estimated frequencies than those covering older vehicles. Claim frequency tended to increase with population density, holding the other included factors constant.
+
+### Model Validation
+
+Model performance was evaluated using five-fold cross-validation and mean Poisson deviance. The risk-factor GLM achieved an average held-out deviance of **0.32535**, compared with **0.33109** for a baseline model that predicted claim counts using the overall training-set claim rate.
+
+This represents an approximately **1.74% reduction in average Poisson deviance**, with the GLM outperforming the baseline in all five folds. The improvement was modest but consistent across folds.
+
+The analysis is exploratory. The model exhibits evidence of overdispersion, and the results do not establish causal relationships or constitute a complete insurance pricing model.
+
 ## Tools
 
 - Python
