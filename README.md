@@ -62,7 +62,8 @@ These findings represent adjusted associations rather than causal effects. The m
 
 ## Next Steps
 
-- Complete additional claim severity analysis.
-- Investigate the relationship between policy characteristics and claim frequency.
-- Develop a pure premium analysis combining claim frequency and severity.
-- Explore statistical modeling approaches for insurance pricing.
+- **Refine claim frequency modeling:** Evaluate alternative count models to address overdispersion and compare predictive performance.
+- **Strengthen model validation:** Assess calibration on held-out data by comparing observed and predicted claim frequencies across risk deciles.
+- **Complete claim severity analysis:** Investigate claim amount distributions, large claims, and suitable severity modeling approaches.
+- **Develop a pure premium analysis:** Combine claim frequency and severity estimates to calculate exploratory expected claim costs across risk profiles.
+- **Document findings and limitations:** Summarize key risk associations, model performance, and considerations for insurance pricing.
