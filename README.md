@@ -44,6 +44,14 @@ This represents an approximately **1.74% reduction in average Poisson deviance**
 
 The analysis is exploratory. The model exhibits evidence of overdispersion, and the results do not establish causal relationships or constitute a complete insurance pricing model.
 
+### Claim Frequency Model Interpretation
+
+A Poisson generalized linear model was fitted using a 150,000-policy sample, with policy exposure included as an offset. Predictors included driver age group, vehicle age group, vehicle power, vehicle brand, fuel type, bonus-malus score, and log-transformed population density. Robust standard errors were used for coefficient inference.
+
+The model estimated meaningful adjusted differences in claim frequency across several risk characteristics. Compared with vehicles aged 0–1 year, vehicles aged 21 years or older had an estimated claim frequency approximately 69.6% lower. Drivers aged 25–34 had an estimated frequency approximately 20.3% lower than drivers aged 18–24. Higher bonus-malus scores and population density were positively associated with estimated claim frequency.
+
+These findings represent adjusted associations rather than causal effects. The model also exhibited overdispersion relative to the standard Poisson variance assumption, indicating that alternative count-model specifications should be evaluated. Results are preliminary and should be assessed using held-out calibration and further model validation before drawing pricing conclusions.
+
 ## Tools
 
 - Python
