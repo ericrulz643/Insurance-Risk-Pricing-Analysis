@@ -30,6 +30,16 @@ The datasets are from the French motor third-party liability insurance dataset c
 
 These findings are descriptive and do not establish that any particular factor causes higher claim frequency.
 
+### Preliminary Pure Premium Analysis by Driver Age
+
+Claim frequency and average claim severity were analyzed across six driver age groups to estimate pure premium, representing expected claim costs per policy-year.
+
+Drivers aged 18–24 had both the highest claim frequency, at 18.93 claims per 100 policy-years, and the highest average claim severity, at $5,838.56. Consequently, this group had a substantially higher estimated pure premium of $1,105.15 per policy-year than any other age group.
+
+For drivers aged 25–64, claim frequencies and average claim severities were comparatively similar, resulting in estimated pure premiums ranging from $169.59 to $198.25 per policy-year. Notably, drivers aged 45–54 had the second-highest claim frequency but one of the lower average claim severities, illustrating how frequency and severity can contribute differently to expected claim costs. Drivers aged 65 and older had a somewhat higher estimated pure premium of $220.92, associated with increased average claim severity relative to most other groups.
+
+Overall, the analysis suggests that differences in expected claim costs across age groups are associated with both claim frequency and severity, with the youngest drivers standing out in both measures. These results are exploratory and descriptive; further investigation of large claims, data reconciliation, and model-based estimates is needed before drawing conclusions about pricing implications.
+
 ### Claim Frequency Modeling
 
 A Poisson generalized linear model (GLM) was developed to analyze motor insurance claim frequency using driver age group, vehicle age group, and log-transformed population density. Policy exposure was included as an offset to account for differences in time at risk.
@@ -61,6 +71,10 @@ Claim amounts were highly concentrated at several exact values. The three most f
 A sensitivity analysis examined the influence of the largest claims on average severity. The 99th percentile claim amount was 16,793.70. Excluding the 267 claims above this threshold reduced the mean claim amount from 2,278.54 to 1,428.01, a decrease of approximately 37.3%.
 
 This result demonstrates that extreme claims have a substantial influence on average severity and expected claim costs. The primary analysis retains all observed claims; the trimmed mean is used only as a diagnostic comparison to quantify the impact of the upper tail.
+
+A preliminary comparison of Gamma and lognormal severity distributions using maximum-likelihood estimation favored the lognormal distribution. The lognormal model had an AIC of 447,184.27, compared with 462,312.01 for the Gamma model, a difference of 15,127.74. However, percentile comparisons showed that the lognormal distribution substantially underestimated the most extreme claims. Therefore, although the lognormal provided a better overall fit among these two candidates, its suitability for modeling extreme losses requires further evaluation.
+
+
 
 ## Tools
 
