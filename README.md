@@ -44,6 +44,8 @@ This represents an approximately **1.74% reduction in average Poisson deviance**
 
 The analysis is exploratory. The model exhibits evidence of overdispersion, and the results do not establish causal relationships or constitute a complete insurance pricing model.
 
+Across the 150,000-policy validation sample, the model predicted 8,038.49 claims compared with 8,037 observed claims, corresponding to a relative prediction error of approximately 0.02%. This indicates excellent aggregate calibration on the sample. However, aggregate agreement alone does not guarantee accurate predictions for individual policies or risk segments; decile-level calibration was also evaluated to assess performance across the risk distribution.
+
 ### Claim Frequency Model Interpretation
 
 A Poisson generalized linear model was fitted using a 150,000-policy sample, with policy exposure included as an offset. Predictors included driver age group, vehicle age group, vehicle power, vehicle brand, fuel type, bonus-malus score, and log-transformed population density. Robust standard errors were used for coefficient inference.
