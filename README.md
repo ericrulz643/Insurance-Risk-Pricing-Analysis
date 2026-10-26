@@ -54,6 +54,14 @@ The model estimated meaningful adjusted differences in claim frequency across se
 
 These findings represent adjusted associations rather than causal effects. The model also exhibited overdispersion relative to the standard Poisson variance assumption, indicating that alternative count-model specifications should be evaluated. Results are preliminary and should be assessed using held-out calibration and further model validation before drawing pricing conclusions.
 
+### Impact of Extreme Claims
+
+Claim amounts were highly concentrated at several exact values. The three most frequent amounts—1,128.12, 1,172.00, and 1,204.00—accounted for approximately 37.2% of all claim records and 19.2% of total claim costs. This concentration helps explain why standard continuous severity distributions may not fully capture the central portion of the observed data. The underlying reason for these repeated amounts cannot be established from the claim amounts alone.
+
+A sensitivity analysis examined the influence of the largest claims on average severity. The 99th percentile claim amount was 16,793.70. Excluding the 267 claims above this threshold reduced the mean claim amount from 2,278.54 to 1,428.01, a decrease of approximately 37.3%.
+
+This result demonstrates that extreme claims have a substantial influence on average severity and expected claim costs. The primary analysis retains all observed claims; the trimmed mean is used only as a diagnostic comparison to quantify the impact of the upper tail.
+
 ## Tools
 
 - Python
