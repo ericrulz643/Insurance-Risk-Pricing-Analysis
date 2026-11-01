@@ -64,6 +64,55 @@ The model estimated meaningful adjusted differences in claim frequency across se
 
 These findings represent adjusted associations rather than causal effects. The model also exhibited overdispersion relative to the standard Poisson variance assumption, indicating that alternative count-model specifications should be evaluated. Results are preliminary and should be assessed using held-out calibration and further model validation before drawing pricing conclusions.
 
+## Severity Analysis and Modeling
+
+Claim severity was analyzed to investigate how claim amounts vary across driver age, vehicle age, and geographic density.
+
+### Severity Model Comparison
+
+Two regression approaches were evaluated:
+
+- **Gamma GLM with a log link:** Models expected claim severity directly on the dollar scale.
+- **Lognormal regression:** Models the logarithm of claim severity, with predictions transformed back to dollars using a smearing correction.
+
+Both models were trained on 80% of the matched severity records and evaluated on a held-out 20% test set.
+
+| Model | MAE | RMSE |
+|---|---:|---:|
+| Gamma GLM | $2,079.74 | $9,358.56 |
+| Lognormal Regression | $2,064.34 | $9,333.45 |
+
+The models produced very similar predictive performance. The lognormal model had slightly lower error, but the improvement was marginal.
+
+Both models struggled to predict individual claim amounts, particularly for large claims. This highlights the difficulty of modeling highly skewed insurance severity distributions using a single regression model.
+
+### Large-Loss Concentration
+
+To investigate the impact of extreme claims, large losses were defined as claims exceeding the 99th percentile of claim severity in the training data.
+
+The resulting threshold was **$17,139.81**.
+
+| Metric | Ordinary Claims | Large Claims |
+|---|---:|---:|
+| Number of claims | 20,943 | 212 |
+| Average severity | $1,418.55 | $92,035.36 |
+| Share of total claim cost | 60.36% | 39.64% |
+
+Although large claims represented approximately 1% of the training claims, they accounted for nearly 40% of total claim costs.
+
+This demonstrates the substantial influence of extreme losses on overall insurance severity and pricing.
+
+### Large-Loss Probability Modeling
+
+A logistic regression model was explored to estimate the probability that an individual claim exceeded the large-loss threshold.
+
+The model included driver age, vehicle age, and geographic density. Although some driver-age coefficients were statistically significant in the training data, out-of-sample discrimination was poor:
+
+- ROC-AUC: 0.4573
+- Average Precision: 0.015
+
+The model was therefore not considered a reliable predictive model. This reinforces the importance of evaluating predictive performance on held-out data rather than relying solely on statistical significance.
+
 ### Impact of Extreme Claims
 
 Claim amounts were highly concentrated at several exact values. The three most frequent amounts—1,128.12, 1,172.00, and 1,204.00—accounted for approximately 37.2% of all claim records and 19.2% of total claim costs. This concentration helps explain why standard continuous severity distributions may not fully capture the central portion of the observed data. The underlying reason for these repeated amounts cannot be established from the claim amounts alone.
